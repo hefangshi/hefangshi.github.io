@@ -8,7 +8,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <meta name="format-detection" content="telephone=no, email=no" />
-    <link rel="stylesheet" type="text/css" href="jsColor.css">
+    <!-- <link rel="stylesheet" type="text/css" href="jsColor.css"> -->
 </head>
 <body>
     <style type="text/css">
@@ -40,10 +40,10 @@
     <div class="border-1px demo"></div>
     <textarea id="output" style="width:100%; height:300px;">
     </textarea>
-    <script type="text/javascript" src="colors.js"></script>
+<!--     <script type="text/javascript" src="colors.js"></script>
     <script type="text/javascript" src="colorPicker.data.js"></script>
     <script type="text/javascript" src="colorPicker.js"></script>
-    <script type="text/javascript" src="jsColor.js"></script>
+    <script type="text/javascript" src="jsColor.js"></script> -->
     <script type="text/javascript">
         (function(){
             var canvas = document.getElementById('paint');
@@ -52,18 +52,22 @@
             var output = document.getElementById('output');
             var input = document.getElementById('color');
 
-            jsColorPicker('input.color', {
-                customBG: '#222',
-                readOnly: true,
-                // patch: false,
-                init: function(elm, colors) { // colors is a different instance (not connected to colorPicker)
-                  elm.style.backgroundColor = elm.value;
-                  elm.style.color = colors.rgbaMixCustom.luminance > 0.22 ? '#222' : '#ddd';
-                },
-                displayCallback: function(){
-                    render(input.value);
-                }
+            input.addEventListener('change', function(){
+                render(input.value);
             });
+
+            // jsColorPicker('input.color', {
+            //     customBG: '#222',
+            //     readOnly: false,
+            //     // patch: false,
+            //     init: function(elm, colors) { // colors is a different instance (not connected to colorPicker)
+            //       elm.style.backgroundColor = elm.value;
+            //       elm.style.color = colors.rgbaMixCustom.luminance > 0.22 ? '#222' : '#ddd';
+            //     },
+            //     displayCallback: function(){
+            //         render(input.value);
+            //     }
+            // });
 
 
             function render(color){
